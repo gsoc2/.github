@@ -1,0 +1,85 @@
+openapi: 3.0.0
+info:
+  title: Your API
+  version: 1.0.0
+  description: A simple API documentation using Swagger
+
+paths:
+  /users:
+    get:
+      summary: Get a list of users
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                users:
+                  - id: 1
+                    name: John Doe
+                  - id: 2
+                    name: Jane Smith
+
+    post:
+      summary: Create a new user
+      requestBody:
+        description: User data
+        required: true
+        content:
+          application/json:
+            example:
+              name: New User
+
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              example:
+                id: 3
+                name: New User
+
+  /users/{userId}:
+    parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+
+    get:
+      summary: Get user details by ID
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                id: 1
+                name: John Doe
+
+    put:
+      summary: Update user details by ID
+      requestBody:
+        description: Updated user data
+        required: true
+        content:
+          application/json:
+            example:
+              name: Updated User
+
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              example:
+                id: 1
+                name: Updated User
+
+    delete:
+      summary: Delete user by ID
+      responses:
+        '204':
+          description: User deleted successfully

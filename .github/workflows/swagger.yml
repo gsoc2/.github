@@ -1,0 +1,19 @@
+name: Update Swagger Documentation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Copy Swagger UI
+        run: cp -r .github/swagger-ui/* $GITHUB_WORKSPACE
+
+      # Add more steps if you need to generate the Swagger specification or do additional processing.
